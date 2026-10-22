@@ -19,9 +19,17 @@ credentials = Credentials.from_service_account_info(
 gc = gspread.authorize(credentials)
 SPREADSHEET_ID = "14JjCKxm9-bTVPaQgRzh7C3Y0rdtrX6_m1HiLljQJmpk"
 
-Sheet = gc.open_by_key(SPREADSHEET_ID).worksheet(
-    "Riwayat Transaksi Kantin Kejujuran X ALG kel 1"
-)
+try:
+    spreadsheet = gc.open_by_key(SPREADSHEET_ID)
+    st.success("Spreadsheet berhasil ditemukan!")
+    st.write("Nama file:", spreadsheet.title)
+
+    Sheet = spreadsheet.worksheet(
+        "Riwayat Transaksi Kantin Kejujuran X ALG kel 1"
+    )
+
+except Exception as e:
+    st.error(f"Koneksi Google Sheets gagal: {type(e).__name__}")
                                                  
 st.markdown("""
 <style>
