@@ -19,7 +19,7 @@ credentials = Credentials.from_service_account_info(
 gc = gspread.authorize(credentials)
 SPREADSHEET_ID = "14JjCKxm9 -bTVPaQgRzh7C3Y0rdtrX6 _m1HiLljQJmpk"
 
-Sheet = gc.open_by_key(SPREADSHEET_ID).worksheet("Riwayat Transaksi Kantin Kejujuran X ALG kel 1)
+Sheet = gc.open_by_key(SPREADSHEET_ID).worksheet("Riwayat Transaksi Kantin Kejujuran X ALG kel 1")
                                                  
 st.markdown("""
 <style>
