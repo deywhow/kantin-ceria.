@@ -1,11 +1,22 @@
 
 import streamlit as st
+import gspread
+from google.oauth2.service_account import Credentials
 
 st.set_page_config(
     page_title="Kantin Ceria",
     page_icon="🍱",
     layout="wide"
 )
+credentials = Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"],
+    scopes=[
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive"
+    ]
+)
+
+gc = gspread.authorize(credentials)
 
 st.markdown("""
 <style>
