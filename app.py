@@ -17,7 +17,7 @@ credentials = Credentials.from_service_account_info(
 )
 
 gc = gspread.authorize(credentials)
-SPREADSHEET_ID = "14JjCKxm9-bTVPaQgRzh7C3Y0rdtrX6_m1HiLljQJmpk"
+SPREADSHEET_ID = "14JjCKxm9-bTVPaQgRzh7C3Y0rdtrX6_m1HiLIjQJmpk"
 
 try:
     spreadsheet = gc.open_by_key(SPREADSHEET_ID)
