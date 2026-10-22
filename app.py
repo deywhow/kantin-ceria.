@@ -26,6 +26,178 @@ h1, h2, h3 {
     border: none;
     font-weight: bold;
 }
+/* Opening screen */
+#kantin-opening {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    background: linear-gradient(145deg, #173d31, #21865b);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: opening-exit 4.2s ease-in-out forwards;
+}
+/* Opening full-screen */
+#kantin-opening {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    background: linear-gradient(135deg, #173d31, #21865b);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    animation: opening-exit 7s ease forwards;
+}
+
+#kantin-opening .opening-line {
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    top: 50%;
+    margin: 0;
+    color: #ffffff !important;
+    font-family: Arial, sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    line-height: 1.3;
+    text-align: center;
+    transform: translateY(-50%);
+    opacity: 0;
+    visibility: hidden;
+}
+
+#kantin-opening .opening-one {
+    animation: show-one 7s linear forwards;
+}
+
+#kantin-opening .opening-two {
+    animation: show-two 7s linear forwards;
+}
+
+#kantin-opening .opening-three {
+    animation: show-three 7s linear forwards;
+}
+
+@keyframes show-one {
+    0% { opacity: 0; visibility: visible; transform: translateY(25px) scale(.85); }
+    8%, 25% { opacity: 1; visibility: visible; transform: translateY(-50%) scale(1); }
+    32%, 100% { opacity: 0; visibility: hidden; transform: translateY(-80px); }
+}
+
+@keyframes show-two {
+    0%, 29% { opacity: 0; visibility: hidden; transform: translateY(25px); }
+    30% { visibility: visible; }
+    36%, 52% { opacity: 1; visibility: visible; transform: translateY(-50%); }
+    60%, 100% { opacity: 0; visibility: hidden; transform: translateY(-80px); }
+}
+
+@keyframes show-three {
+    0%, 57% { opacity: 0; visibility: hidden; transform: translateY(25px); }
+    58% { visibility: visible; }
+    65%, 82% { opacity: 1; visibility: visible; transform: translateY(-50%); }
+    90%, 100% { opacity: 0; visibility: hidden; transform: translateY(-80px); }
+}
+
+@keyframes opening-exit {
+    0%, 85% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+/* Konten utama muncul dari bawah */
+.stMainBlockContainer {
+    animation: main-enter 1s ease-out 5.8s both;
+}
+
+@keyframes main-enter {
+    from { opacity: 0; transform: translateY(45px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Main content enters */
+.stMainBlockContainer {
+    animation: main-enter 1s ease-out 2.8s both;
+}
+
+@keyframes main-enter {
+    from { opacity: 0; transform: translateY(45px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Teks halaman muncul bergantian */
+.stMainBlockContainer h1 {
+    animation: textFadeUp 0.8s ease-out both;
+}
+
+.stMainBlockContainer h2 {
+    animation: textSlideIn 0.8s ease-out both;
+}
+
+.stMainBlockContainer h3 {
+    animation: textFadeUp 0.7s ease-out both;
+}
+
+/* Kartu produk muncul dari bawah */
+[data-testid="stVerticalBlockBorderWrapper"] {
+    animation: productEnter 0.75s ease-out both;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* Efek ketika kursor menyentuh kartu */
+[data-testid="stVerticalBlockBorderWrapper"]:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(33, 134, 91, 0.18);
+}
+
+/* Efek tombol */
+.stButton > button {
+    transition: transform 0.2s ease,
+                background-color 0.2s ease;
+}
+
+.stButton > button:hover {
+    transform: scale(1.04);
+}
+
+/* Gerakan animasi */
+@keyframes textFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes textSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes productEnter {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -63,6 +235,19 @@ if "keranjang" not in st.session_state:
 if "struk" not in st.session_state:
     st.session_state.struk = None
 
+st.markdown("""
+<div id="kantin-opening">
+    <div class="opening-line opening-one">
+        Hai! 👋
+    </div>
+    <div class="opening-line opening-two">
+        Lagi pengin jajan apa?
+    </div>
+    <div class="opening-line opening-three">
+        Yuk, cari favoritmu!
+    </div>
+</div>
+""", unsafe_allow_html=True)
 st.title("🍱 KANTIN CERIA")
 st.write("✨ Jajan enak, belanja mudah, transaksi jujur!")
 st.caption("Pilih produk favoritmu dan masukkan ke keranjang.")
@@ -170,6 +355,7 @@ else:
             st.rerun()
 
 if st.session_state.struk:
+    st.balloons()
     struk = st.session_state.struk
 
     st.divider()
