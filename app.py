@@ -7,30 +7,7 @@ st.set_page_config(
     page_title="Kantin Ceria",
     page_icon="🍱",
     layout="wide"
-)
-credentials = Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"],
-    scopes=[
-        "https://www.googleapis.com/auth/spreadsheets",
-        "https://www.googleapis.com/auth/drive"
-    ]
-)
-
-gc = gspread.authorize(credentials)
-SPREADSHEET_ID = "14JjCKxm9-bTVPaQgRzh7C3Y0rdtrX6_m1HiLIjQJmpk"
-
-try:
-    spreadsheet = gc.open_by_key(SPREADSHEET_ID)
-    st.success("Spreadsheet berhasil ditemukan!")
-    st.write("Nama file:", spreadsheet.title)
-
-    Sheet = spreadsheet.worksheet(
-        "Riwayat Transaksi Kantin Kejujuran X ALG kel 1"
-    )
-
-except Exception as e:
-    st.error(f"Koneksi Google Sheets gagal: {type(e).__name__}")
-                                                 
+)                                             
 st.markdown("""
 <style>
 .stApp {
