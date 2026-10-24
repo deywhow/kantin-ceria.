@@ -162,7 +162,12 @@ h1, h2, h3 {
                 background-color 0.2s ease;
 }
 
-.stButton > button:hover {
+/* Efek kotak */
+.stButton > card {
+    transition: transform 0.2s ease,
+                background-color 0.2s ease;
+
+.stButton > card:hover {
     transform: scale(1.04);
 }
 
@@ -207,31 +212,26 @@ produk = {
         "harga": 5000,
         "varian": ["Melon", "Mangga", "Semangka", "Jambu"],
         "emoji": "🧃"
-        use_container_width=True
     },
     "Puding": {
         "harga": 8000,
         "varian": ["Melon", "Original", "Strawberry", "Cokelat"],
         "emoji": "🍮"
-        use_container_width=True
     },
     "Buah Potong Segar": {
         "harga": 6000,
         "varian": ["Melon", "Semangka", "Mangga"],
         "emoji": "🍉"
-        use_container_width=True
     },
     "Es Kul Kul": {
         "harga": 3000,
         "varian": ["Pisang", "Melon", "Semangka", "Marshmallow"],
         "emoji": "🍫"
-        use_container_width=True
     },
     "Macaroni Schotel": {
         "harga": 8000,
         "varian": ["Original"],
         "emoji": "🧀"
-        use_container_width=True
     }
 }
 
