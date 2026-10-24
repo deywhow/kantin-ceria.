@@ -203,30 +203,35 @@ h1, h2, h3 {
 """, unsafe_allow_html=True)
 
 produk = {
-    "Jus Fauzan": {
+    "Jus": {
         "harga": 5000,
         "varian": ["Melon", "Mangga", "Semangka", "Jambu"],
         "emoji": "🧃"
+        use_container_width=True
     },
-    "Puding Jihan": {
+    "Puding": {
         "harga": 8000,
         "varian": ["Melon", "Original", "Strawberry", "Cokelat"],
         "emoji": "🍮"
+        use_container_width=True
     },
     "Buah Potong Segar": {
         "harga": 6000,
         "varian": ["Melon", "Semangka", "Mangga"],
         "emoji": "🍉"
+        use_container_width=True
     },
-    "Es Kul Kul + Cokelat": {
+    "Es Kul Kul": {
         "harga": 3000,
         "varian": ["Pisang", "Melon", "Semangka", "Marshmallow"],
         "emoji": "🍫"
+        use_container_width=True
     },
     "Macaroni Schotel": {
         "harga": 8000,
         "varian": ["Original"],
         "emoji": "🧀"
+        use_container_width=True
     }
 }
 
